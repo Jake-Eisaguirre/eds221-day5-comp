@@ -43,16 +43,19 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# The line below creates a sequence of years from 0 to 8 by 1 (look at 8 year time frame)
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+time_yr
+
+# The line below creates an empty matrix with appropriate rows and lengths for initial fish pop and time
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# The line below fills proj_year with our initial data but by starting to fill it at row 1
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+
+# The for loop below start filling in row 2 with a length of time_year and loop that through each column by dot product of fish_leslie * proj_year. 
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
